@@ -1,0 +1,146 @@
+ 1  lynx http://httpd.apache.org/download.cgi
+    2  version
+    3  wsl --list --verbose
+    4  cat /etc/issue
+    5  sudo apt update
+    6  sudo apt install apache2
+    7  sudo apt update
+    8  ip config
+    9  ip help
+   10  sudo systemctl start apache2
+   11  systemctl status apache2
+   12  sudo systemctl enable apache2
+   13  sudo yum groupinstall 'Development Tools'
+   14  sudo apt install build-essential
+   15  make
+   16  systemctl status httpd
+   17  systemctl status apache2
+   18  sudo apt install libapr1-dev libaprutil1-dev libpcre3-dev
+   19  apache2 -v
+   20  dpkg -l apache2
+   21  curl -I localhost
+   22  cd /var
+   23  cd www
+   24  cd html
+   25  cd root
+   26  cd ../../../
+   27  sudo ss-tuln | grep :80
+   28  sudo netstat -tulnp | grep : 80
+   29  sudo ss -tuln | grep :80
+   30  cd /var/www/html
+   31  vi index.html
+   32  dpkg -l | grep -E libapr|libpcre
+   33  cd ../
+   34  cd..
+   35  cd ../
+   36  cd /
+   37  dpkg -l | grep -E libapr|libpcre
+   38  dpkg -l | grep -E 'libapr|libpcre'
+   39  ./configure
+   40  cd ./configure
+   41  ./configure --with-pcre=/usr/lib/x86_64-linux-gnu
+   42  sudo systemctl status apache2
+   43  wget https://downloads.apache.org/httpd/httpd-2.4.xx.tar.gz
+   44  wget https://downloads.apache.org/httpd/httpd-2.4.63.tar.gz
+   45  tar -xzvf httpd-2.4.63.tar.gz
+   46  cd httpd-2.4.63
+   47  ./configure --prefix=/usr/local/apache2
+   48  sudo apt-get update
+   49  sudo apt-get install build-essential libpcre3-dev
+   50  wget https://dlcdn.apache.org/apr/apr-util-1.6.3.tar.gz
+   51  tar xzvf apr-util-1.6.3.tar.gz
+   52  cd apr-util-1.6.3
+   53  .configure --prefix=/usr/local/apr-util --with-apr=usr/local/apr
+   54  ./configure
+   55  .configure --prefix=/usr/local/apr-util
+   56  ./configure --prefix=/usr/local/apr-util
+   57  ./configure --prefix=/usr/local/apr-util --with-apr=usr/local/apr
+   58  make && sudo make install
+   59  ./configure --prefix=/usr/local/apache2
+   60  cd../
+   61  cd ../
+   62  sudo apt-get install libexpat1-dev
+   63  cd httpd-2.4.63/srclib
+   64  wget https://dlcdn.apache.org/apr/apr-1.7.4.tar.gz
+   65  cd ../
+   66  ./configure --prefix=/usr/local/apache2
+   67  ls
+   68  sudo apt-get install build-essential libtool automake
+   69  ls -l | grep configure
+   70  ls
+   71  cd httpd-2.4.63
+   72  ls -ls
+   73  sudo apt-get install build-essential libtool automake
+   74  ls -l | grep configure
+   75  chmod +x configure
+   76  ls -l | grep configure
+   77  ./configure --prefix=/usr/local/apache2
+   78  cd srclib
+   79  cd ../
+   80  ls
+   81  cd ../
+   82  ls
+   83  ls -ls
+   84  cd ../
+   85  ls -ls
+   86  cd home
+   87  cd suhookym
+   88  cd ls
+   89  ls
+   90  cd suhokym
+   91  ls
+   92  cd httpd-2.4.63
+   93  ls
+   94  cd srclib
+   95  ls
+   96  wget https://archive.apache.org/dist/apr/apr-1.7.0.tar.gz
+   97  s
+   98  ls
+   99  tar xzf apr-1.7.0.tar.gz && mv apr-1.7.0 apr
+  100  ls
+  101  wget https://archive.apache.org/dist/apr/apr-util-1.6.1.tar.gz
+  102  ls
+  103  tar xzf apr-util-1.6.1.tar.gz && mv apr-util-1.6.1 apr-util
+  104  ls
+  105  cd ..
+  106  ./configure --prefix=/usr/local/apache2 --with-icluded-apr
+  107  ./configure --prefix=/usr/local/apache2
+  108  make
+  109  sudo make install
+  110  sudo systemctl status apache2
+  111  sudo systemctl status httpd
+  112  sudo systemctl start httpd
+  113  ls
+  114  cd ../
+  115  ls
+  116  cd etc
+  117  ls -ls
+  118  ls -ls | grep httpd
+  119  ls -ls | grep xml
+  120  cd httpd
+  121  ls -ls | grep apache2
+  122  cd apache2
+  123  cd apache2.conf
+  124  ls
+  125  cd ../../../
+  126  sudo fuser -n tcp 80
+  127  netstat
+  128  apt install net-tools
+  129  netstat -nap
+  130  netstat -nap | grep 80
+  131  sudo firewall-cmd -permantent --add-service=http
+  132  sudo ufw allow 80
+  133  sudo ufw allow 80/tcp
+  134  sudo apt install ufw
+  135  ufw --help
+  136  sudo ufw status
+  137  sudo ufw status 80
+  138  sudo ufw enable 80
+  139  enable 80
+  140  ufw enable 80
+  141  ufw
+  142  ufw --version
+  143  history
+  //2025-03-27 apache2 http 서버 리눅스에 구축하기 위에 내용은 내가 지금까지 서버를 구동하기 위해
+               쳤던 명령어들이다 현재까지 어떤상황인지 모르겠지만 일단 방화벽 설정까지 완료 여기까지 헀던것중 모르는것들은
+               차차 주석문을 달아 알아낼예정이다.
