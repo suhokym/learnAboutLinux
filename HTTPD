@@ -270,3 +270,37 @@
     266  history
     //2025-03-29 000-default.conf 설정을 변경시켜 윈도우 아이피주소로 연결되있는 포트 번호의 방화벽을 풀어주고
     도매인구매해야한다는 사실을 깨닫고 무료 도메인 받고 설정중
+      267  history
+      268  curl -v http://172.30.1.74:5173
+      269  hostname -I
+      270  curl -v http://sheepship.kro.kr
+      271  sudo a2enmod proxy proxy-http proxy-wstunnel rewrite
+      272  sudo systemctl restart apache2
+      273  sudo systemctl status apache2
+      274  sudo systemctl restart apache2
+      275  sudo systemctl status apache2
+      276  cd ../
+      277  ls
+      278  vi ports.conf
+      279  tail -f /var/log/apache2/access.log
+      280  cd sites-available
+      281  vi 000-default.conf
+      282  sudo systemctl restart apache2
+      283  curl -I http://sheepship.kro.kr/@vite/client
+      284  vi 000-default.conf
+      285  hostname -I
+      286  history
+      287  sudo systemctl restart apache2
+      288  sudo systemctl status apache2
+      289  sudo systemctl restart apache2
+      290  sudo systemctl status apache2
+      291  hostname -I
+      292  vi 000-default.conf
+      293  sudo systemctl status apache2
+      294  hostname -I
+      295  curl -I http://sheepship.kro.kr
+      296  curl -X POST http://sheepship.kro.kr/api/test
+      297  curl -I http://sheepship.kro.kr
+      298  sudo systemctl status apache
+      299  sudo systemctl status apache2
+      300  history
