@@ -1,40 +1,21 @@
- 1  lynx http://httpd.apache.org/download.cgi
-    2  version
-    3  wsl --list --verbose
-    4  cat /etc/issue
     5  sudo apt update
     6  sudo apt install apache2
     7  sudo apt update
-    8  ip config
-    9  ip help
    10  sudo systemctl start apache2
    11  systemctl status apache2
    12  sudo systemctl enable apache2
    13  sudo yum groupinstall 'Development Tools'
    14  sudo apt install build-essential
    15  make
-   16  systemctl status httpd
-   17  systemctl status apache2
    18  sudo apt install libapr1-dev libaprutil1-dev libpcre3-dev
    19  apache2 -v
    20  dpkg -l apache2
    21  curl -I localhost
-   22  cd /var
-   23  cd www
-   24  cd html
-   25  cd root
-   26  cd ../../../
    27  sudo ss-tuln | grep :80
    28  sudo netstat -tulnp | grep : 80
    29  sudo ss -tuln | grep :80
    30  cd /var/www/html
    31  vi index.html
-   32  dpkg -l | grep -E libapr|libpcre
-   33  cd ../
-   34  cd..
-   35  cd ../
-   36  cd /
-   37  dpkg -l | grep -E libapr|libpcre
    38  dpkg -l | grep -E 'libapr|libpcre'
    39  ./configure
    40  cd ./configure

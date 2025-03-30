@@ -1,0 +1,71 @@
+WSL을 이용해서 HTTP SERVER를 리눅스에 설치하고 사용하면서 윈도우에 깔려있는 리액트와 스프링 부트간 리버스 프록시
+설정법
+
+1. Window Powershell 콘손
+    1.wsl --install
+    2.Microsoft store에서 ubuntu 설치
+    3.wsl --list --verbose //설치된 wsl리스트 보여주기
+    4.netstat -ano | findstr :8080 //8080 포트가 열려있는지 확인
+
+
+
+REACT 부분 프록시 설정 (vite.config.js)
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+
+// https://vite.dev/config/
+export default defineConfig({
+  plugins: [react()],
+  server: {
+    allowedHosts: [
+        'sheepship.kro.kr',
+        '.sheepship.kro.kr'
+    ],
+    host: '0.0.0.0',
+    port: 5173,
+  },
+});
+
+Spring boot 부분 프록시 설정 (java/자신패키지/config/webconfig.java)
+package sheepback.config;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+@Configuration
+public class webConfig implements WebMvcConfigurer {
+    @Override
+    public void addCorsMappings(CorsRegistry registry) {
+        // 모든 경로에 대해 CORS를 허용하고, 특정 출처를 허용
+        registry.addMapping("/**")
+                .allowedOrigins("http://sheepship.kro.kr") // HTTP SERVER에 한 도메인 주소
+                .allowedMethods("GET", "POST", "PUT", "DELETE", "PATCH")
+                .allowedHeaders("*")
+                .allowCredentials(true);  // 자격 증명(쿠키 등)을 포함하려면 true
+    }
+}
+
+APACHE HTTP SERVER 프록시 설정(/etc/apache2/sites-available/000-default.conf)
+내아이피(IPV4) 172.30.1.74
+<VirtualHost *:80>
+    ServerName sheepship.kro.kr //내 도메인
+
+    # CORS 설정
+    Header always set Access-Control-Allow-Origin "http://sheepship.kro.kr"
+    Header always set Access-Control-Allow-Methods "GET, POST, OPTIONS"
+    Header always set Access-Control-Allow-Headers "Content-Type, Authorization"
+
+    # React 프론트엔드 설정 (포트 5173)
+    ProxyPass / http://172.30.1.74:5173/
+    ProxyPassReverse / http://172.30.1.74:5173/
+
+    # Spring Boot API 설정 (포트 8080)
+    ProxyPass /api http://172.30.1.74:8080/
+    ProxyPassReverse /api http://172.30.1.74:8080/
+
+    # 헤더 전달 설정
+    ProxyPreserveHost On
+    RequestHeader set X-Forwarded-Proto "http"
+</VirtualHost>
