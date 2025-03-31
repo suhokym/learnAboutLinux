@@ -205,3 +205,4 @@
       298  sudo systemctl status apache
       299  sudo systemctl status apache2
       300  history
+      Rmx
