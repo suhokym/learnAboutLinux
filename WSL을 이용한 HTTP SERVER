@@ -7,6 +7,49 @@ WSL을 이용해서 HTTP SERVER를 리눅스에 설치하고 사용하면서 윈
     3.wsl --list --verbose //설치된 wsl리스트 보여주기
     4.netstat -ano | findstr :8080 //8080 포트가 열려있는지 확인
 
+1. 패키지로 Apache 설치 및 설정
+    Apache 설치 및 실행
+    bash
+        sudo apt update
+        sudo apt install apache2
+        sudo systemctl start apache2
+        sudo systemctl enable apache2
+    상태 확인 및 테스트
+    bash
+        systemctl status apache2
+        curl -I localhost
+2. 소스 코드로부터 Apache 컴파일 및 설치
+    필요한 라이브러리 설치
+    bash
+        sudo apt install build-essential libapr1-dev libaprutil1-dev libpcre3-dev
+    Apache 소스 코드 다운로드 및 컴파일
+    bash
+        wget https://downloads.apache.org/httpd/httpd-2.4.63.tar.gz
+        tar -xzvf httpd-2.4.63.tar.gz
+        cd httpd-2.4.63
+        ./configure --prefix=/usr/local/apache2
+        make
+        sudo make install
+3. 리버스 프록시 설정
+    모듈 활성화
+    bash
+        sudo a2enmod proxy
+        sudo a2enmod proxy_http
+        sudo a2enmod headers
+    설정 파일 수정
+    bash
+        cd /etc/apache2/sites-available
+        vi 000-default.conf
+    Apache 재시작
+    bash
+        sudo systemctl restart apache2
+4. 추가 설정 및 테스트
+    방화벽 설정: sudo ufw allow 80
+
+    상태 확인: systemctl status apache2
+
+    테스트: curl -I localhost
+
 
 
 REACT 부분 프록시 설정 (vite.config.js)
